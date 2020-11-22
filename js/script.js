@@ -1,17 +1,14 @@
 const money = 75000,
-    income = 25000,
-    addExpenses = '10000, 5000, 2000',
+    income = 'рукоделие',
+    addExpenses = 'интернет, учеба, продукты',
     deposit = true,
     mission = 1000000,
-    period = 8;
-console.log(typeof money);
-console.log(typeof income);
-console.log(typeof deposit);
+    period = 8,
+    budgetDay = money / 30;
+console.log(typeof money, income, deposit);
 console.log(addExpenses.length);
 console.log("Период равен " + period + " месяцев");
-console.log("Цель заработать " + mission + " рублей/долларов/гривен/юани");
-addExpenses.toLocaleLowerCase();
-console.log(addExpenses.split(' '));
+console.log("Цель заработать " + mission + " рублей");
+console.log(addExpenses.toLocaleLowerCase().split(', '));
 
-let budgetDay = money / 30;
 console.log(budgetDay);
