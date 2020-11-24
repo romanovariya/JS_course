@@ -1,5 +1,5 @@
 'use strict';
-let showTypeOf = function (data) { 
+const showTypeOf = function (data) { 
     console.log(data, typeof(data));
 };
 function getExpensesMonth(a, b) { 
@@ -25,7 +25,7 @@ const income = 'рукоделие',
     accumulatedMonth = getAccumulatedMonth(+money, expenses),
     budgetDay = accumulatedMonth / 30;
 
-let getStatusIncome = function(){
+const getStatusIncome = function(){
     if (budgetDay >= 1200) {
         return ("У вас высокий уровень дохода");
     } else if (budgetDay >= 600 && budgetDay < 1200) {
@@ -38,7 +38,7 @@ showTypeOf(money);
 showTypeOf(income);
 showTypeOf(deposit);
 console.log(expenses);
-console.log(addExpenses.split(', '));
+console.log(addExpenses.toLowerCase().split(', '));
 console.log(expenses);
 console.log(getTargetMonth(accumulatedMonth, mission));
 console.log((Math.floor(budgetDay)));
