@@ -7,12 +7,8 @@ let    expenses = [],
     money;
 const income = 'рукоделие',
     mission = 1000000,
-    period = 8,
-    addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую"),
-    deposit = confirm("Есть ли у вас депозит в банке?"),
-    showTypeOf = function (data) { 
-        console.log(data, typeof(data));
-    };
+    period = 8;
+    
 
 let start = function() {
     do {
@@ -21,6 +17,12 @@ let start = function() {
 };
 
 start();
+
+const addExpenses = prompt("Перечислите возможные расходы за рассчитываемый период через запятую"),
+    deposit = confirm("Есть ли у вас депозит в банке?"),
+    showTypeOf = function (data) { 
+        console.log(data, typeof(data));
+    };
 
 const getExpensesMonth = function () { 
     let sum = 0;
@@ -42,7 +44,7 @@ const getAccumulatedMonth = function () {
     accumulatedMonth = getAccumulatedMonth(),
     budgetDay = accumulatedMonth / 30,
     getTargetMonth = function () {
-        return (Math.ceil(Number(mission) / Number(accumulatedMonth)));
+        return (Math.ceil(mission / Number(accumulatedMonth)));
     };
 const getStatusIncome = function(){
     if (budgetDay >= 1200) {
