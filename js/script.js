@@ -49,7 +49,9 @@ const appData = {
         let values = [];
         for (let i = 0; i < 2; i++) {
 
-        keys[i] = prompt("Введите обязательную статью расходов?");
+        do {
+            keys[i] = prompt("Введите обязательную статью расходов?");
+        } while(isNumber(keys[i]));
         do {
             values[i] = +prompt("Во сколько это обойдется?");
         } while (Number.isInteger(values[i]) !== true );
@@ -111,7 +113,7 @@ if (appData.getTargetMonth() < 0) {
     console.log("Цель будет достигнута через " + appData.getTargetMonth() + " месяцев");
 }
 console.log(appData.getStatusIncome());
-console.log(appData.addExpenses.join(', ').split(/\s+/).
+console.log(appData.addExpenses.join(', ').trim().split(/\s+/).
     map(word => word[0].toUpperCase() + word.substring(1)).join(' '));
 console.log('Наша программа включает в себя данные: ');
 for (let key in appData) {
