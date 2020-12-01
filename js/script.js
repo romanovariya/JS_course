@@ -12,7 +12,28 @@ const start = function() {
 };
 
 start();
-
+const calculate = document.getElementById('start'),
+    buttons = document.getElementsByTagName('button'),
+    check = document.querySelector('#deposit-check'),
+    incomeItem = document.querySelectorAll('additional_income-item'),
+    budget = document.getElementsByClassName('budget_month-value'),
+    budgetDay = document.getElementsByClassName('budget_month-value'),
+    expensesMonth = document.getElementsByClassName('expenses_month-value'),
+    additionalIncome = document.getElementsByClassName('additional_income-value'),
+    additionalExpenses = document.getElementsByClassName('additional_expenses-value'),
+    incomePeriod = document.getElementsByClassName('income_period-value'),
+    targetMonth = document.getElementsByClassName('target_month-value'),
+    salary = document.querySelector('.salary-amount'),
+    incomeTitle = document.querySelector('.income-title'),
+    incomeAmount = document.querySelector('.income-amount'),
+    addIncome = document.querySelector('.additional_income-item'),
+    expensesTitle = document.querySelector('.expenses-title'),
+    expensesAmount = document.querySelector('.expenses-amount'),
+    addExpensesItem = document.querySelector('.additional_expenses-item'),
+    depositAmount = document.querySelector('.deposit-amount'),
+    depositPercent = document.querySelector('.deposit-percent'),
+    range = document.querySelector('.period-select'),
+    target = document.querySelector('.target-amount');
 const appData = {
     budget: +money,
     budgetDay: 0,
