@@ -5,7 +5,9 @@ const isNumber = function(n) {
 let expensesItems = document.querySelectorAll('.expenses-items'),
     periodSelect = document.querySelector('.period-select'),
     periodAmount = document.querySelector('.period-amount'),
-    incomeItems = document.querySelectorAll('.income-items');
+    incomeItems = document.querySelectorAll('.income-items'),
+    nameInput = document.querySelectorAll('[placeholder="Наименование"]'),
+    sumInput = document.querySelectorAll('[placeholder="Сумма"]');
 const calculate = document.getElementById('start'),
     button1 = document.getElementsByTagName('button')[0],
     button2 = document.getElementsByTagName('button')[1],
@@ -26,8 +28,6 @@ const calculate = document.getElementById('start'),
     depositAmount = document.querySelector('.deposit-amount'),
     depositPercent = document.querySelector('.deposit-percent'),
     target = document.querySelector('.target-amount');
-
-
 
 const appData = {
     budget: 0,
@@ -164,25 +164,25 @@ const appData = {
     },
     calcSavedMoney: function(){
        return appData.budgetMonth * periodSelect.value;
-    }
+    },
 };
+for(let i = 0; i < (nameInput.length); i++) {
+    nameInput[i].addEventListener('input',function() {
+		nameInput[i].value = nameInput[i].value.replace(/[^а-я ,.]/,'');
+	});
+}
+for(let i = 0; i < (sumInput.length); i++) {
+    sumInput[i].addEventListener('input',function() {
+		sumInput[i].value = sumInput[i].value.replace(/[^0-9]/,'');
+	});
+}
 
 calculate.addEventListener('click', appData.start);
 button1.addEventListener('click', appData.addIncomeBlock);
 button2.addEventListener('click', appData.addExpensesBlock);
-periodSelect.addEventListener('change', appData.getRangeValue);
+periodSelect.addEventListener('input', appData.getRangeValue);
 appData.getTargetMonth();
 appData.getStatusIncome();
 appData.getInfoDeposit();
 appData.calcSavedMoney();
-// if (appData.getTargetMonth() < 0) {
-//     console.log("Цель не будет достигнута");
-// } else {
-//     console.log("Цель будет достигнута через " + appData.getTargetMonth() + " месяцев");
-// }
-// // console.log(appData.addExpenses.join(', ').trim().split(/\s+/).
-// //     map(word => word[0].toUpperCase() + word.substring(1)).join(' '));
-// console.log('Наша программа включает в себя данные: ');
-// for (let key in appData) {
-// 	console.log(key + ' : ' + appData[key]);
-// }
+
