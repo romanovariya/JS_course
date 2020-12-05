@@ -16,6 +16,7 @@ const calculate = document.getElementById('start'),
     budget = document.getElementsByClassName('budget_month-value')[0],
     budgetDay = document.getElementsByClassName('budget_day-value')[0],
     expensesMonth = document.getElementsByClassName('expenses_month-value')[0],
+    expensesBlock = document.querySelector('.expenses'),
     additionalIncome = document.getElementsByClassName('additional_income-value')[0],
     additionalExpenses = document.getElementsByClassName('additional_expenses-value')[0],
     incomePeriod = document.getElementsByClassName('income_period-value')[0],
@@ -27,7 +28,9 @@ const calculate = document.getElementById('start'),
     addExpensesItem = document.querySelector('.additional_expenses-item'),
     depositAmount = document.querySelector('.deposit-amount'),
     depositPercent = document.querySelector('.deposit-percent'),
-    target = document.querySelector('.target-amount');
+    target = document.querySelector('.target-amount'),
+    cloneExpensesItem = expensesItems[0].cloneNode(true),
+    cloneIncomeItem = incomeItems[0].cloneNode(true);
 
 const appData = {
     budget: 0,
@@ -75,8 +78,8 @@ const appData = {
     },
     addExpensesBlock: function() {
         
-        let cloneExpensesItem = expensesItems[0].cloneNode(true);
-        expensesItems[0].parentNode.insertBefore(cloneExpensesItem, button2);
+        let newCloneExpensesItem = cloneExpensesItem.cloneNode(true);
+        expensesBlock.insertBefore(newCloneExpensesItem, button2);
         expensesItems = document.querySelectorAll('.expenses-items');
         if(expensesItems.length === 3) {
             button2.style.display = 'none';
@@ -84,8 +87,8 @@ const appData = {
     },
     addIncomeBlock: function () { 
 
-        let cloneIncomeItem = incomeItems[0].cloneNode(true);
-        incomeItems[0].parentNode.insertBefore(cloneIncomeItem, button1);
+        let newCloneIncomeItem = cloneIncomeItem.cloneNode(true);
+        incomeItems[0].parentNode.insertBefore(newCloneIncomeItem, button1);
         incomeItems = document.querySelectorAll('.income-items');
         if(incomeItems.length === 3) {
             button1.style.display = 'none';
