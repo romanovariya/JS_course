@@ -5,7 +5,8 @@ const isNumber = function(n) {
 let expensesItems = document.querySelectorAll('.expenses-items'),
     periodSelect = document.querySelector('.period-select'),
     periodAmount = document.querySelector('.period-amount'),
-    incomeItems = document.querySelectorAll('.income-items');
+    incomeItems = document.querySelectorAll('.income-items'),
+    nameInput = document.querySelectorAll('[placeholder = "Наименование"]');
 const calculate = document.getElementById('start'),
     button1 = document.getElementsByTagName('button')[0],
     button2 = document.getElementsByTagName('button')[1],
@@ -14,6 +15,7 @@ const calculate = document.getElementById('start'),
     budget = document.getElementsByClassName('budget_month-value')[0],
     budgetDay = document.getElementsByClassName('budget_day-value')[0],
     expensesMonth = document.getElementsByClassName('expenses_month-value')[0],
+    expensesBlock = document.querySelector('.expenses'),
     additionalIncome = document.getElementsByClassName('additional_income-value')[0],
     additionalExpenses = document.getElementsByClassName('additional_expenses-value')[0],
     incomePeriod = document.getElementsByClassName('income_period-value')[0],
@@ -25,7 +27,9 @@ const calculate = document.getElementById('start'),
     addExpensesItem = document.querySelector('.additional_expenses-item'),
     depositAmount = document.querySelector('.deposit-amount'),
     depositPercent = document.querySelector('.deposit-percent'),
-    target = document.querySelector('.target-amount');
+    target = document.querySelector('.target-amount'),
+    cloneExpensesItem = expensesItems[0].cloneNode(true),
+    cloneIncomeItem = incomeItems[0].cloneNode(true);
 
 
 
@@ -75,8 +79,8 @@ const appData = {
     },
     addExpensesBlock: function() {
         
-        let cloneExpensesItem = expensesItems[0].cloneNode(true);
-        expensesItems[0].parentNode.insertBefore(cloneExpensesItem, button2);
+        let newCloneExpensesItem = cloneExpensesItem.cloneNode(true);
+        expensesBlock.insertBefore(newCloneExpensesItem, button2);
         expensesItems = document.querySelectorAll('.expenses-items');
         if(expensesItems.length === 3) {
             button2.style.display = 'none';
@@ -84,8 +88,8 @@ const appData = {
     },
     addIncomeBlock: function () { 
 
-        let cloneIncomeItem = incomeItems[0].cloneNode(true);
-        incomeItems[0].parentNode.insertBefore(cloneIncomeItem, button1);
+        let newCloneIncomeItem = cloneIncomeItem.cloneNode(true);
+        incomeItems[0].parentNode.insertBefore(newCloneIncomeItem, button1);
         incomeItems = document.querySelectorAll('.income-items');
         if(incomeItems.length === 3) {
             button1.style.display = 'none';
@@ -93,7 +97,6 @@ const appData = {
     },
     getRangeValue: function () { 
         periodAmount.innerHTML = this.value;
-        console.log(this.value);
     },
     getExpenses: function() {
         expensesItems.forEach(function(item){
@@ -170,19 +173,9 @@ const appData = {
 calculate.addEventListener('click', appData.start);
 button1.addEventListener('click', appData.addIncomeBlock);
 button2.addEventListener('click', appData.addExpensesBlock);
-periodSelect.addEventListener('change', appData.getRangeValue);
+periodSelect.addEventListener('input', appData.getRangeValue);
 appData.getTargetMonth();
 appData.getStatusIncome();
 appData.getInfoDeposit();
 appData.calcSavedMoney();
-// if (appData.getTargetMonth() < 0) {
-//     console.log("Цель не будет достигнута");
-// } else {
-//     console.log("Цель будет достигнута через " + appData.getTargetMonth() + " месяцев");
-// }
-// // console.log(appData.addExpenses.join(', ').trim().split(/\s+/).
-// //     map(word => word[0].toUpperCase() + word.substring(1)).join(' '));
-// console.log('Наша программа включает в себя данные: ');
-// for (let key in appData) {
-// 	console.log(key + ' : ' + appData[key]);
-// }
+
