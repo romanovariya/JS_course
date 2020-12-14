@@ -124,7 +124,7 @@ class AppData {
         }
         depositBank.style.display = 'none';
         depositAmount.style.display = 'none';
-        depositPercent.style.display = 'none';
+        depositPercent.style.display = 'none ';
         depositBank.value = '0';
         depositAmount.value = '';
         this.deposit = false;
@@ -279,16 +279,6 @@ class AppData {
         return (Math.ceil(target.value / Number(this.budgetMonth)));
     }
 
-    getStatusIncome() {
-        if (this.budgetDay >= 1200) {
-            return ("У вас высокий уровень дохода");
-        } else if (this.budgetDay >= 600 && this.budgetDay < 1200) {
-            return ("У вас средний уровень дохода");
-        } else if (this.budgetDay <= 0) {
-            return ("Что-то пошло не так");
-        }
-    }
-
     getInfoDeposit() {
         if(this.deposit){
             if(depositPercent.value > 0 && depositPercent.value < 1) {
@@ -296,7 +286,8 @@ class AppData {
             } else if (depositPercent.value >= 1 && depositPercent.value <= 100) {
                 this.percentDeposit = depositPercent.value / 100;
             } else {
-                alert('Введите корректное значение в поле проценты');
+                depositPercent.value = 1;
+                alert('Размер процента введен некорректно. По умолчанию установлено значение 100%');
             }
             this.moneyDeposit = depositAmount.value;
         }
